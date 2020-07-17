@@ -1,0 +1,126 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxDepth = function(root) {
+  if(!root) return 0 // nice! base case!
+  // hmmm... I could go left to right finding the deepest part then take the highest number, I think. 
+  // I'm thinking to big. The subproblem is does this node have one more node on either the right or left. I'm going to write a function for that. 
+  // I'm usually saving the song behind me when I pick up my phone. This is the Release Radar playlist on Spotify for 2/28. 
+  const getDepth = node => {
+    let maxDepth = 0
+    let currentDepth = 0
+    let rootHasMoreDepth = hasMoreDepth(node, currentDepth)
+    if(rootHasMoreDepth) { // If current node does not have a right or left node
+      return currentDepth
+    } else { // We've got a ball game!
+      
+      while() { // I think I'm getting my responsibilities crossed in my head about which function should do what. 
+        // call previous node if there is no more depth
+        // set the current node being checked (left or right) to something, then call 
+        // 
+        // Only two more minutes before I look at the solution and implement that. So here we are. One day I'm going to finish problems like this within the hour. It's a matter of time (pun!)
+        // waiting for the clock to tick down, honestly. 3 2 1!!! Alrighty! Let's check the solution! 
+        if(currentDepth > maxDepth) {
+          maxDepth += maxDepth++
+        } // WELL WELL WELL it looks like I have to subscribe in order to see the solution. Dang. I think I'm just going to stop here for the day, sleep on that surprise (I really thought every problem with that "has solution" icon wasn't behind a paywall), and probably pay for a subscription tomorrow and review the solution. It will be nice to sleep on the problem as well. Feeling fried anyways; Probably because I woke up early. Anywayyyyys, this was an okay sesh; I feel like the solution keeps slipping through my mental grasp. I really wanted this one. :shrug:, that'll happen sometimes. Buh bye! 
+      }
+    }
+  }
+  const hasMoreDepth = (node, currentDepth) => {
+    if(!node.left && !node.right) { return false } else {
+      if(!node.left) { 
+        if(!node.right) { return false } else {
+          return hasMoreDepth(node.right, currentDepth++) // check right second
+        }
+      } else {
+        return hasMoreDepth(node.left, currentDepth++) // check left first
+      }
+    }
+  }
+};
+
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxDepth = function(root) {
+  if(!root) return 0 // nice! base case!
+  // hmmm... I could go left to right finding the deepest part then take the highest number, I think. 
+  // I'm thinking to big. The subproblem is does this node have one more node on either the right or left. I'm going to write a function for that. 
+  // I'm usually saving the song behind me when I pick up my phone. This is the Release Radar playlist on Spotify for 2/28. 
+  const getDepth = node => {
+    let maxDepth = 0
+    let currentDepth = 0
+    let rootHasMoreDepth = hasMoreDepth(node, currentDepth)
+    if(rootHasMoreDepth) { // If current node does not have a right or left node
+      return currentDepth
+    } else { // We've got a ball game!
+      
+      while() { // I think I'm getting my responsibilities crossed in my head about which function should do what. 
+        // call previous node if there is no more depth
+        // set the current node being checked (left or right) to something, then call 
+        // 
+        // Only two more minutes before I look at the solution and implement that. So here we are. One day I'm going to finish problems like this within the hour. It's a matter of time (pun!)
+        // waiting for the clock to tick down, honestly. 3 2 1!!! Alrighty! Let's check the solution! 
+        if(currentDepth > maxDepth) {
+          maxDepth += maxDepth++
+        }
+      }
+    }
+  }
+  const hasMoreDepth = (node, currentDepth) => {
+    if(!node.left && !node.right) { return false } else {
+      if(!node.left) { 
+        if(!node.right) { return false } else {
+          return hasMoreDepth(node.right, currentDepth++) // check right second
+        }
+      } else {
+        return hasMoreDepth(node.left, currentDepth++) // check left first
+      }
+    }
+  }
+};
+
+
+
+
+    let maxDepths = [] // I keep thinking left to right then writing my code traversing the tree right to left and it's confusing me. 
+    let thisDepth = 0
+    let nodeBeingChecked = node
+    let leftChecked = leftHasMoreDepth(nodeBeingChecked)
+    while(!leftChecked) { // won't run if left is not a node
+      // I think I'm overcomplicating this, as I do. I saw overcomplicating because I lose track of the subproblem. 
+    }
+    while(!leftChecked) { // won't run if left is not a node
+      
+    } // I'm not sure how to keep track of what position the node I'm checking is. Maybe that needs to be an argument to another function. 
+
+
+      const leftHasMoreDepth = node => {
+    if(!node.left) { return false } else {
+      // I don't want to tie the two functions together but it seems easy to do that. That would be a side effect, when I want to lean towards using "pure functions", but this might be an unnecessesary restriction I'm applying to myself before initially solving the problem.
+      return leftHasMoreDepth(node.left)
+    }
+  }
+  const rightHasMoreDepth = node => { // seems simpler to split them into a checkRight and checkLeft functions
+    if(!node.right) { return false } else {
+      
+    }
+  }

@@ -1,0 +1,98 @@
+[1,2,2,3,4,4,3]
+[1]
+[1,2,2]
+
+
+
+  if(typeof root === 'boolean') return root // short circuits the recursion
+  let isOutsideSame, isInsideSame = false
+  if(!root) {
+    return true // root node is null, which is technically a mirror
+  } else {
+    if(!root.right) {  
+      if(!root.left) {
+        return true // There is no right or left node
+      } else {
+        return false // There isn't a right node. There is a left node. 
+      }
+    } else { 
+      if(!root.left) {
+        return false // There is a right node. There isn't a left node. 
+      } else { // There are both right and left nodes
+        if(root.right.right && root.left.left) { // I could probably do this before as well. I need both nodes in order for them to be equal. Oooo, oops, idk how to handle the double null...ugh, guess I'll keep them separate up top. I can keep them together here though because I'm actually checking the values here. 
+          if(root.right.right.val !== root.left.left.val) { // I think if I just swap these to being not equal instead of equal checks it'll handle the case when they are both null
+            // do nothing
+          } else {
+            isOutsideSame = true
+          }
+        } else {
+          isOutsideSame = !root.right.right && !root.left.left ? true : false // both outsides are nulls. I forgot why I pickedup my phone. Oh yeh! To save this song.
+        }
+        if(root.left.right && root.right.left) { // I could probably do this before as well. I need both nodes in order for them to be equal. Oooo, oops, idk how to handle the double null...ugh, guess I'll keep them separate up top. I can keep them together here though because I'm actually checking the values here. 
+          if(root.left.right.val !== root.right.left.val) {
+            // do nothing
+          } else {
+            isInsideSame = true
+          }
+        } else {
+          isInsideSame = !root.left.right && !root.right.left ? true : false // both outsides are nulls. I forgot why I pickedup my phone. Oh yeh! To save this song.
+        }
+        console.log('isOutsideSame, isInsideSame', isOutsideSame, isInsideSame)
+        if(isOutsideSame && isInsideSame) {
+          let leftSide = isSymmetric(root.left)
+          let rightSide = isSymmetric(root.right)
+          console.log('leftSide, rightSide', leftSide, rightSide) // I'm fading. Keep it together!!! 
+          if(leftSide && rightSide) {
+            if(root.right.val !== root.left.val) {
+              return false
+            } else {
+              return true
+            }
+          } else {
+            return false
+          }
+        } else {
+          return false
+        }
+      }
+    }
+  } 
+
+
+
+So what are we doing today??? Moar binary trees!! I'm actually going to pause this video and rewatch the coding session from yesterday. I learnt a bit right there! Was moving to fast when writing conditionals that caused me to miss some simple cases. A bit overconfident. Going to pause and go find another mouse because the right click on this one is dying. Okey dokey, this mouse seems to be working as expected. Binary trees!! 
+
+
+  // seems like a recursion thing again with a left === right instead of right === right.
+  // My head is still in the other problem. 
+  // I guess the base case/subproblem is that the right and left have the same value for the second level. 
+  // Hmmm...I'm wondering whether it's straight recursion of this function or if I should write another function that takes one nodes right and left and compares them. Something like that. 
+  // idk if I am just thinking recursion because that's what is on my mind. Oh well! We'll try that. 
+  // base case
+  if(!root) {
+    return true // root is null. Technically symmetrical. This might come up at the bottom of the tree (pun unintended)
+  } else {
+    if(!root.right) { 
+      // I don't think this portion is right. I want to be comparing the outside of the bottom level of the tree in. So, if a root node has a right, return that node. If it does not have a right, compare it with the node on the left. Wait a sec! If the root has right and left nodes, compare the values. If the values are the same compare... (this song is saying hello really realistically and it's distracting me. Or it's outside. I'm not sure. It's distracing me :-) ) ...the right.right to the left.left and the right.left to the left.right. If those two conditionals are true, recursively call the function again passing those four nodes. You'd end up splitting the binary tree into several sections of 7 nodes. Noooo...that wouldn't work for a binary tree of arbitrary depth. Okay...back to the drawing board. 
+      
+      // I think I'm overcomplicating this. If the root has a right node, return that. If it does not have a right node, return null. Do the same for the left. 
+      if(!root.left) {
+        return true // There is a root node, but both the children are null
+      } else {
+        return false // pretty sure this is not correct, but going to do it anyways for now 
+      }
+    } else { // am I just repeating myself? Maybe, I'll combine later. 
+      if(!root.left) {
+        return false // There is a node on the right, but not on the left. 
+      } else {
+        return true // There is a root node, but both the children are null
+      }
+    }
+    if(root.right.val === root.left.val) { // these nodes don't need to be equal though, technically. They do in the second level. Going to shut the window. Oh! Maybe that's the key; Recursively call the function passing the right and left nodes all the way down the tree, but compare the right.right to the left.left and the right.left to the left.right. If they those two are equal then that level of the binary tree is a mirror image. 
+      
+      // I think I'm going to go back to what I was thinking before I thought I was overcomplicating things, by kind of breaking up the binary tree into a series of seven node binary trees and return a result based on that. 
+
+    } else {
+      return false
+    }
+  }
